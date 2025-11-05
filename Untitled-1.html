@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <title>Minimal Blog</title>
+  <style>
+    /* ====== Temel Değişkenler ====== */
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --card: #f8fafc; /* slate-50 */
+      --border: #e2e8f0; /* slate-200 */
+      --primary: #0ea5e9; /* sky-500 */
+      --primary-contrast: #ffffff;
+      --link: #0369a1; /* sky-700 */
+      --code-bg: #0b1020;
+      --code-text: #e2e8f0;
+      --shadow: 0 10px 20px rgba(2, 6, 23, 0.06);
+      --radius: 16px;
+      --container: 1000px;
+    }
+    
+    /* Sistem koyu temayı tercih ediyorsa hafifçe uyum sağla */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1020;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --card: #0f172a;
+        --border: #1e293b;
+        --link: #7dd3fc;
+        --code-bg: #0b1020;
+        --code-text: #e2e8f0;
+      }
+    }
+
+    /* Dark sınıfı varsa zorla koyu tema */
+    .dark {
+      --bg: #0b1020;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --card: #0f172a;
+      --border: #1e293b;
+      --link: #7dd3fc;
+      --code-bg: #0b1020;
+      --code-text: #e2e8f0;
+    }
+
+    /* ====== Reset & Taban ====== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 50% -20%, rgba(14,165,233,.08), transparent 60%), var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--container); margin-inline: auto; padding: 24px; }
+
+    /* ====== Üstbar ====== */
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: saturate(1.2) blur(6px);
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; gap: 16px; align-items: center; justify-content: space-between; }
+    .brand { display: flex; gap: 10px; align-items: center; font-weight: 800; letter-spacing: .2px; }
+    .logo { width: 32px; height: 32px; border-radius: 10px; background: var(--primary); box-shadow: var(--shadow); position: relative; }
+    .logo::after { content: "✦"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--primary-contrast); font-size: 18px; }
+
+    .search { flex: 1; display: flex; align-items: center; gap: 10px; max-width: 520px; margin-inline: 16px; }
+    .search input {
+      width: 100%; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--border);
+      background: var(--card); color: var(--text); outline: none;
+    }
+
+    .btn {
+      border: 1px solid var(--border); background: var(--card); color: var(--text);}
